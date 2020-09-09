@@ -13,7 +13,7 @@
 |Ruby on Rails|6.0.3.2|
 |MySQL|8.0|
 |jQuery|4.4.0|
-
+|CircleCi|2.1|
 
 ## メリット
 ---
