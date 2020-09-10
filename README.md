@@ -9,6 +9,9 @@
 **飲食店などでスマホを使って注文するためのアプリ**
 **できるだけユーザー側での操作を減少して使いやすさを重視する**
 
+# App URL
+  heroku : https://smart-order-app.herokuapp.com/
+
 # 開発環境
 
 |language|version|
