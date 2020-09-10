@@ -37,5 +37,4 @@ jobs:
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      - heroku/deploy-via-git: # git プッシュを使用して Heroku にブランチをデプロイします。
-          only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
+      - heroku/deploy-via-git: only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
