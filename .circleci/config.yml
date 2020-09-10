@@ -3,11 +3,15 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2
   slack: circleci/slack@3.4.2
+  heroku: circleci/heroku@1.0.0
 
 workflows:
   my-workflow:
     jobs:
       - slack-notification
+  heroku_deploy:
+    jobs:
+      - deploy
 
 jobs:
 
@@ -27,3 +31,11 @@ jobs:
       - run:
           name: ruby -v
           command: ruby -v
+
+  deploy:
+    executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
+    steps:
+      - checkout
+      - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
+      - heroku/deploy-via-git: # git プッシュを使用して Heroku にブランチをデプロイします。
+          only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
