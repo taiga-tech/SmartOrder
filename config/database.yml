@@ -54,7 +54,4 @@ test:
 #   password: <%= ENV['SMARTORDER_DATABASE_PASSWORD'] %>
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  master_key: <%= ENV['RAILS_MASTER_KEY'] %>
+  database: my_app_production
