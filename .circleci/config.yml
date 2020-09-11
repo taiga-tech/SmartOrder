@@ -13,9 +13,9 @@ workflows:
   heroku_deploy:
     jobs:
       - deploy
-        # filters:
-        #   branches:
-        #     only: master
+        filters:
+          branches:
+            only: master
 
 jobs:
 
@@ -42,4 +42,4 @@ jobs:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
       - heroku/deploy-via-git
-        # only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
+        only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
