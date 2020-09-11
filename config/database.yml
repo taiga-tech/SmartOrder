@@ -47,11 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: SmartOrder_production
-#   username: SmartOrder
-#   password: <%= ENV['SMARTORDER_DATABASE_PASSWORD'] %>
-
 production:
-  database: my_app_production
+  <<: *default
+  database: SmartOrder_production
+  username: SmartOrder
+  password: <%= ENV['SMARTORDER_DATABASE_PASSWORD'] %>
