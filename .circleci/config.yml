@@ -41,6 +41,8 @@ jobs:
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      - command "git push heroku master"
+      - run:
+        name: "デプロイ"
+        command: "git push heroku master"
       # - heroku/deploy-via-git:
       #   only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
