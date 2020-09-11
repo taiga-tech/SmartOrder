@@ -39,13 +39,5 @@ jobs:
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      # - heroku/deploy-via-git:
-      #   only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
-      - run:
-        name: "deoloy"
-        command: |
-          git push heroku master
-      - run:
-        nema: "migrate"
-        command:
-          heroku run rails db:migrate
+      - heroku/deploy-via-git:
+        only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
