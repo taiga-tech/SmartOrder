@@ -44,7 +44,7 @@ jobs:
       - run:
         name: "deoloy"
         command: |
-          git push heorku master
+          git push heroku master
       - run:
         nema: "migrate"
         command:
