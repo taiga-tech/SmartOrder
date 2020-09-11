@@ -6,7 +6,6 @@ orbs:
   heroku: circleci/heroku@1.2.2
 
 workflows:
-  version: 2.1
   my-workflow:
     jobs:
       - slack-notification
@@ -39,15 +38,16 @@ jobs:
 
   deploy:
     executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
-    parameters:
-      post-deploy:
-        default:
-          - run:
-            command: heroku run rails db:migrate --app smart-order-app
-        type: steps
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      - heroku/deploy-via-git:
-        only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
-      - steps: << parameters.post-deploy >>
+      # - heroku/deploy-via-git:
+      #   only-branch: master # only-branch を指定した場合、他のブランチでデプロイは行われません。
+      - run:
+        name: "deoloy"
+        command: |
+          git push heorku master
+      - run:
+        nema: "migrate"
+        command:
+          heroku run rails db:migrate
