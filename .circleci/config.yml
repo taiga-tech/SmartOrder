@@ -40,4 +40,4 @@ jobs:
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      - heroku/deploy-via-git:
+      - heroku/deploy-via-git
