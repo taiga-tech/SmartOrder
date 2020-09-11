@@ -5,18 +5,6 @@ orbs:
   slack: circleci/slack@3.4.2
   heroku: circleci/heroku@1.2.2
 
-workflows:
-  my-workflow:
-    jobs:
-      - slack-notification
-  heroku_deploy:
-    jobs:
-      - deploy:
-        filters:
-          branches:
-            only:
-              - master
-
 jobs:
   slack-notification:
     docker:
@@ -41,3 +29,16 @@ jobs:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
       - heroku/deploy-via-git
+
+workflows:
+  version: 2.1
+  my-workflow:
+    jobs:
+      - slack-notification
+  heroku_deploy:
+    jobs:
+      - deploy:
+        filters:
+          branches:
+            only:
+              - master
