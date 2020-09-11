@@ -6,13 +6,6 @@ orbs:
   heroku: circleci/heroku@1.2.2
 
 jobs:
-  slack-notification:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - run: exit 0
-      - slack/status
-
   build:
     docker:
       - image: circleci/ruby:2.7.1-stretch-node
@@ -20,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: ruby -v
+          name: "ruby -v"
           command: ruby -v
 
   deploy:
@@ -30,11 +23,15 @@ jobs:
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
       - heroku/deploy-via-git
 
+  slack-notification:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - run: exit 0
+      - slack/status
+
 workflows:
   version: 2.1
-  my-workflow:
-    jobs:
-      - slack-notification
   heroku_deploy:
     jobs:
       - deploy:
@@ -42,3 +39,6 @@ workflows:
           branches:
             only:
               - master
+  slack-notification:
+    jobs:
+      - slack-notification
