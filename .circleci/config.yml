@@ -1,9 +1,9 @@
 version: 2
 
-# orbs:
+orbs:
 #   ruby: circleci/ruby@1.1.1
 #   slack: circleci/slack@3.4.2
-#   heroku: circleci/heroku@1.2.2
+  heroku: circleci/heroku@1.2.2
 
 jobs:
   # slack-notification:
