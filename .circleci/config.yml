@@ -18,15 +18,15 @@ orbs:
 #       - deploy-and-notify
 
 jobs:
-  # build:
-  #   docker:
-  #     - image: circleci/ruby:2.7.1-stretch-node
-  #   executor: ruby/default
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: ruby -v
-  #         command: ruby -v
+  build:
+    docker:
+      - image: circleci/ruby:2.7.1-stretch-node
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: ruby -v
+          command: ruby -v
 
   deploy_master:
     executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
