@@ -10,8 +10,6 @@ workflows:
   heroku_deploy:
     jobs:
       - deploy_master:
-          requires:
-            - build
           filters:
             branches:
                 only: master
