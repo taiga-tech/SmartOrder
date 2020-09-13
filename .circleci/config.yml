@@ -31,7 +31,8 @@ jobs:
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
       # - heroku/deploy-via-git:
       #   only-branch: master
-      - command: `git push heroku master`
+      - command: |
+        `git push heroku master`
 
   deploy-and-notify:
     docker:
