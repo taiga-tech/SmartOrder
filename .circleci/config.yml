@@ -40,7 +40,8 @@ jobs:
   #     - slack/status
 
   deploy-and-notify:
-    executor: container
+    docker:
+      - image: buildpack-deps:trusty
     steps:
       - checkout
       - run: ./deploy.sh
