@@ -13,7 +13,7 @@ workflows:
         filters:
           branches:
               only: master
-      - deploy-and-notify
+      - deploy-and-notify:
         filters:
           branches:
               only: master
