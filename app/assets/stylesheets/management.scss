@@ -1,0 +1,67 @@
+@import "modules/mg-header";
+
+.wrapper {
+  display: flex;
+
+  @import "modules/side";
+
+  .Main {
+    width: 100%;
+    height: calc(100vh - 60px);
+
+    &__form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #dce2e7a2;
+      height: 100%;
+      // background-color: rgba(0, 255, 255, 0.17);
+      background-color: #fafafa;
+      &--contents {
+        height: 80%;
+        padding: 5px 60px 40px 60px;
+        background-color: #fff;
+        border-top: 5px solid aqua;
+        .Form-title {
+          font-weight: 500;
+          font-size: 36px;
+        }
+        .content {
+          background-color: #fff;
+          margin: 20px 0;
+          border-radius: 8px;
+          border: 1px solid rgb(223, 223, 223);
+          .label {
+            padding: 5px 10px;
+            font-size: 20px;
+            background-color: rgba(0, 255, 255, 0.17);
+            border-bottom: 1px solid rgb(190, 190, 190);
+            border-radius: 8px 8px 0 0;
+          }
+          .field_control {
+            padding: 20px;
+            .field {
+              width: 60%;
+              height: 40px;
+              // outline-style: none;
+              border: none;
+              border-bottom: 2px solid #000;
+            }
+            .long {
+              width: 500px;
+            }
+          }
+
+        }
+        .submit {
+          border: none;
+          background-color: rgb(71, 94, 196);
+          padding: 9px 22px;
+          border-radius: 5px;
+          font-size: 17px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
