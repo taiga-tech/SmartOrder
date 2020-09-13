@@ -29,15 +29,9 @@ jobs:
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      - heroku/deploy-via-git:
-        only-branch: master
-
-  # slack-notification:
-  #   docker:
-  #     - image: buildpack-deps:trusty
-  #   steps:
-  #     - run: exit 0
-  #     - slack/status
+      # - heroku/deploy-via-git:
+      #   only-branch: master
+      - command: `git push heroku master`
 
   deploy-and-notify:
     docker:
