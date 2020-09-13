@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 orbs:
   ruby: circleci/ruby@1.1.1
@@ -32,7 +32,7 @@ jobs:
         only-branch: master
 
 workflows:
-  version: 2.1
+  version: 2
   my-workflow:
     jobs:
       - slack-notification

@@ -47,14 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: SmartOrder_production
-#   username: SmartOrder
-#   password: <%= ENV['SMARTORDER_DATABASE_PASSWORD'] %>
-
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: SmartOrder_production
+  username: SmartOrder
+  password: <%= ENV['SMARTORDER_DATABASE_PASSWORD'] %>
