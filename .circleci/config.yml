@@ -5,6 +5,18 @@ orbs:
   slack: circleci/slack@3.4.2
   heroku: circleci/heroku@1.2.2
 
+workflows:
+  version: 2.1
+  heroku_deploy:
+    jobs:
+      - deploy_master:
+        filters:
+          branches:
+            only: master
+  my-workflow:
+    jobs:
+      - slack-notification
+
 jobs:
   slack-notification:
     docker:
@@ -24,26 +36,9 @@ jobs:
           command: ruby -v
 
   deploy_master:
-    # executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
+    executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
     steps:
-      # - checkout
-      # - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      # - heroku/deploy-via-git:
-      #   only-branch: master
-      - deploy:
-        name: Deploy Master to Heroku
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-          fi
-workflows:
-  version: 2.1
-  heroku_deploy:
-    jobs:
-      - deploy_master:
-        filters:
-          branches:
-            only: master
-  # my-workflow:
-  #   jobs:
-  #     - slack-notification
+      - checkout
+      - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
+      - heroku/deploy-via-git:
+        only-branch: master
