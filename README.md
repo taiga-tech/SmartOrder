@@ -17,6 +17,7 @@
 |language|version|
 |:--------|:-------|
 |Docker|19.03.12|
+|docker-compose|1.26.2|
 |Ruby|2.7.1|
 |Ruby on Rails|6.0.3.3|
 |MySQL|8.0|
