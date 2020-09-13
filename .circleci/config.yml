@@ -28,8 +28,9 @@ jobs:
     steps:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
-      - heroku/deploy-via-git:
-        only-branch: master
+      - run:
+        name: deploy
+        command: git push heroku master
 
 workflows:
   version: 2.1
