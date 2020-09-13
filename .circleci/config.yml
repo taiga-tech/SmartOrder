@@ -12,7 +12,7 @@ workflows:
       - deploy_master:
         filters:
           branches:
-            only: master
+              only: master
       - deploy-and-notify
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
       - heroku/deploy-via-git:
-        only-branch: master
+          only-branch: master
 
   deploy-and-notify:
     docker:
