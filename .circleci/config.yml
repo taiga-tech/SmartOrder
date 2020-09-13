@@ -19,8 +19,6 @@ orbs:
 
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.7.1-stretch-node
     executor: ruby/default
     steps:
       - checkout
