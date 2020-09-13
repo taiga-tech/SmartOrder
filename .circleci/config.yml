@@ -36,8 +36,6 @@ workflows:
   heroku_deploy:
     jobs:
       - deploy_master:
-        requires:
-          - slack-notification
         filters:
           branches:
             only: master
