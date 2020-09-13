@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'management#index'
-  # resources :management do
-  #   collerction do
-  #   end
-  # end
+  resources :management do
+    collection do
+      resources :store
+    end
+  end
 end

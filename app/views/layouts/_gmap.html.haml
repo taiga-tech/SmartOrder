@@ -1,0 +1,21 @@
+#map
+%script{ async: "", src: @google_api }
+:javascript
+  let map;
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: gon.store.latitude,
+        lng: gon.store.longitude
+      },
+      zoom: 20,
+    });
+    marker = new google.maps.Marker({
+      position: {
+        lat: gon.store.latitude,
+        lng: gon.store.longitude
+      },
+      map: map
+    });
+  }
