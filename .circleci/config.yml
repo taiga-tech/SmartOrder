@@ -29,8 +29,7 @@ jobs:
       - checkout
       - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
       - heroku/deploy-via-git:
-        only-branch:
-          - master
+        only-branch: master
 
 workflows:
   version: 2.1
