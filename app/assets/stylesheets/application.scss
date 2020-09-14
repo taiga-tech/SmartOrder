@@ -1,8 +1,10 @@
-@import "reset";
+/*
+  *= require material_icons
+  *= require_tree .
+  *= require_self
+*/
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "jquery-ui";
-@import "management";
-@import "store";
-@import "validate"
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');

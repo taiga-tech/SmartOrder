@@ -63,3 +63,4 @@ gem "ancestry"
 gem 'phonelib'
 gem 'payjp'
 gem 'geocoder'
+gem 'material_icons'
