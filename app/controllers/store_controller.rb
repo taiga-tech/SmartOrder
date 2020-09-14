@@ -3,7 +3,7 @@ class StoreController < ApplicationController
 
   def show
     gon.store = @store
-    @google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap"
+    # @google_api = "https://maps.g oogleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap"
   end
 
   def edit
