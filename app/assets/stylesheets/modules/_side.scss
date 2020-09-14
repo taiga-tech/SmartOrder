@@ -1,14 +1,45 @@
 .Side {
-  width: 15vw;
-  // height: calc(100vh - 60px);
-  outline: 1px solid #000;
+  overflow-y: scroll;
+  width: 250px;
+  height: calc(100vh - 50px);
   background-color: #fff;
-  // position: fixed;
-  display: none;
+  position: fixed;
+  left: -400px;
   z-index: 1;
+  box-shadow: 8px 0px 8px -1px rgba(0, 0, 0, 0.3);
+  a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #000;
+    // font-weight: 500;
+  }
+  &__staff {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 20px 0;
+    .image {
+      width: 120px;
+      height: 120px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .name {
+      margin-top: 5px;
+    }
+  }
   &__link {
-    padding: 20px;
-    font-size: 16px;
-    
+    display: flex;
+    padding: 15px;
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 }

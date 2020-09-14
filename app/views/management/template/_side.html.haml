@@ -1,33 +1,57 @@
-.Side
+.Side.off
+  = link_to "#" do
+    .Side__staff
+      .image
+
+      .name
+        仲野大雅
+
   = link_to root_path do
     .Side__link
+      .icon
       トップ
+
+  = link_to store_path(1) do
+    .Side__link
+      .icon
+        = material_icon.store_mall_directory
+      店舗情報
 
   = link_to edit_store_path(1) do
     .Side__link
+      .icon
+        = material_icon.edit
       店舗情報編集
 
   = link_to "#" do
     .Side__link
+      .icon
+        = material_icon.local_dining
       メニュー
 
   -# モーダル
   = link_to "#" do
     .Side__link
+      .icon
       カテゴリー
 
   = link_to "#" do
     .Side__link
+      .icon
       レビュー一覧
 
   = link_to "#" do
     .Side__link
+      .icon
       注文一覧
 
   = link_to "#" do
     .Side__link
+      .icon
       売上
 
   = link_to "#" do
     .Side__link
-      ログアウト
+      .icon
+        = material_icon.map
+      マップ
