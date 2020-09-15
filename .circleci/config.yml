@@ -26,9 +26,7 @@ jobs:
       - run:
           name: ruby -v
           command: ruby -v
-      - slack/status:
-        success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n:github-wh: User：$CIRCLE_USERNAME'
-        failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n:github-wh: User：$CIRCLE_USERNAME'
+      - slack/status
 
   deploy_master:
     executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
