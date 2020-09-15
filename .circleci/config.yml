@@ -9,7 +9,9 @@ orbs:
 workflows:
   test:
     jobs:
-      - build
+      - test:
+        requires:
+            - build
   heroku_deploy:
     jobs:
       - deploy_master:
@@ -24,13 +26,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: rubocop
-          command: bundle exec rubocop
+          name: bundle
+          command: bundle install
+
+  test:
+    steps:
+      - checkout
+      - run:
+        name: rudocop
+        command: bundle exec rudocop
       - slack/status:
           success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n:github-wh: User：$CIRCLE_USERNAME'
           failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n:github-wh: User：$CIRCLE_USERNAME'
           webhook: '${SLACK_WEBHOOK}'
-
 
   deploy_master:
     executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
