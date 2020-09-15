@@ -7,9 +7,11 @@ orbs:
 
 
 workflows:
-  heroku_deploy:
+  test:
     jobs:
       - build
+  heroku_deploy:
+    jobs:
       - deploy_master:
           filters:
             branches:
