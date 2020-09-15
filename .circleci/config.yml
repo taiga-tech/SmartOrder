@@ -31,12 +31,12 @@ jobs:
           command: bundle install
 
   test:
-    executor; ruby/default
+    executor: ruby/default
     steps:
       - checkout
       - run:
-        name: rudocop
-        command: bundle exec rudocop
+          name: rudocop
+          command: bundle exec rudocop
       - slack/status:
           success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n:github-wh: User：$CIRCLE_USERNAME'
           failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n:github-wh: User：$CIRCLE_USERNAME'
