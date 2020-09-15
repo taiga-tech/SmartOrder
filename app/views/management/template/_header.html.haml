@@ -1,7 +1,9 @@
-.Management-header
-  .bar-icon#mg-bar
+.Mg-header
+  .Mg-header__bar-icon#mg-bar
     = icon("fas", "bars")
-  .title
-    SmartOrder
-  .bar
-    ログアウト
+  .Mg-header__title
+    = link_to management_index_path do
+      SmartOrder
+  .Mg-header__link
+    = link_to "#" do
+      ログアウト
