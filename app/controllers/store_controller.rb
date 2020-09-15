@@ -1,17 +1,12 @@
 class StoreController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update]
-
-  def show
-    gon.store = @store
-    # @google_api = "https://maps.g oogleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap"
-  end
+  before_action :set_store, only: [:edit, :update]
 
   def edit
   end
 
   def update
     if @store.update(store_params)
-      redirect_to store_path
+      # redirect_to management_index_path
     end
   end
 
