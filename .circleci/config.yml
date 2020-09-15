@@ -27,9 +27,9 @@ jobs:
           name: ruby -v
           command: ruby -v
       - slack/status:
-        success_message: ':circleci-success: テストが完了しました'
-        failure_message: ':circleci-failed: テストが失敗しました'
-        webhook: '${SLACK_WEBHOOK}'
+          success_message: ':circleci-success: テストが完了しました'
+          failure_message: ':circleci-failed: テストが失敗しました'
+          webhook: '${SLACK_WEBHOOK}'
 
 
   deploy_master:
