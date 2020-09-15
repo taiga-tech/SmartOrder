@@ -9,9 +9,9 @@ orbs:
 workflows:
   test:
     jobs:
-      - test:
-        requires:
-          - build
+      - build
+      - test
+
 
   heroku_deploy:
     jobs:
