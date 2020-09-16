@@ -54,9 +54,9 @@ commands:
 
   set_db:
     steps:
-      - run:
-          name: move db config
-          command: mv config/database.yml.ci config/database.yml
+      # - run:
+      #     name: move db config
+      #     command: mv config/database.yml.ci config/database.yml
       - run:
           name: db:create
           command: bundle exec rake db:create
