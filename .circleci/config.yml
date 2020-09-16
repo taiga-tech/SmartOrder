@@ -61,10 +61,10 @@ jobs:
     working_directory: ~/SmartOrder
     docker:
       - image: circleci/ruby:2.7.1-node-browsers
-          environment:
-            BUNDLE_RETRY: 3
-            BUNDLE_PATH: vendor/bundle
-            BUNDLER_VERSION: 2.1.4
+        environment:
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
     steps:
       - checkout
       - bundle_install
