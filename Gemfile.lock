@@ -292,8 +292,6 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (0.4.1)
-    rubocop-ast (0.4.0)
-      parser (>= 2.7.1.4)
     ruby-progressbar (1.10.1)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
@@ -382,6 +380,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.3)
   rails-controller-testing
   rails-i18n
+  rspec-rails
   rubocop
   sass-rails (>= 6)
   spring
