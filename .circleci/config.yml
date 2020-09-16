@@ -25,9 +25,6 @@ workflows:
 jobs:
   build:
     executor: ruby/default
-      environment:
-          BUNDLER_VERSION: 2.1.4
-
     working_directory: ~/SmartOrder
 
     steps:
