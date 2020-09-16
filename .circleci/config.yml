@@ -25,11 +25,29 @@ workflows:
 jobs:
   build:
     executor: ruby/default
+      environment:
+        - BUNDLER_VERSION: 2.1.4
+
+    working_directory: ~/SmartOrder
+
     steps:
       - checkout
+      - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "Gemfile.lock" }}
+        - v1-dependencies-
+
       - run:
-          name: bundle install
-          command: bundle install
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.1.4
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+          - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
 
   test:
     executor: ruby/default
