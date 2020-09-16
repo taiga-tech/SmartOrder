@@ -5,7 +5,7 @@ orbs:
   slack: circleci/slack@3.4.2
   heroku: circleci/heroku@1.2.2
 
-command:
+commands:
   bundle_install:
     steps:
       - restore_cache:
