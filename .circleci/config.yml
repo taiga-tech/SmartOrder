@@ -17,6 +17,10 @@ executors:
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
           RAILS_ENV: 'test'
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USERNAME: 'root'
+          MYSQL_PASSWORD: ''
+          MYSQL_PORT: 3306
       - image: circleci/mysql:8.0
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
@@ -47,6 +51,24 @@ commands:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+  set_db:
+    steps:
+      - run:
+          name: move db config
+          command: mv config/database.yml.ci config/database.yml
+      - run:
+          name: db:create
+          command: |
+            rails db:create
+      - run:
+          name: db:migrate
+          command:  |
+            rails db:migrate
+      - run:
+          name: db:seed
+          command: |
+            rails db:seed
+
   test_notification:
     steps:
       - slack/status:
@@ -76,22 +98,14 @@ commands:
 # ---------------------------------
 
 jobs:
-  # build:
-  #   executor:
-  #     name: default
-  #   steps:
-  #     - checkout
-  #     - bundle_install
 
   test:
     executor:
       name: default
     steps:
       - checkout
-      - run:
-          name: pwd
-          command: pwd
       - bundle_install
+      - set_db
       - run_rubocop
       - run_rspec
       - test_notification
