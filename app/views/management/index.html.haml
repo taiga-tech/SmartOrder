@@ -1,3 +1,17 @@
-%h1 Management#index
-%p Find me in app/views/management/index.html.haml
-%p いけてますか？
+= render "management/template/header"
+.wrapper
+  = render "management/template/side"
+  .Main
+    .Main__Contents
+      .Cards
+        .item
+          .item__inner
+            = render "management/template/store"
+        .item
+          .item__inner
+        .item
+          .item__inner
+        .item
+          .item__inner
+        .item
+          .item__inner
