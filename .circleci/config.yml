@@ -79,8 +79,8 @@ jobs:
       - bundle_install
 
   test:
-    # executor:
-    #   name: default
+    executor:
+      name: default
     steps:
       - run_rubocop
       - run_rspec
