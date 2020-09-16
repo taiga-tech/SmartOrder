@@ -9,10 +9,10 @@ orbs:
 workflows:
   test:
     jobs:
-      - build
+      # - build
       - test:
-          requires:
-            - build
+          # requires:
+          #   - build
 
   heroku_deploy:
     jobs:
@@ -51,11 +51,13 @@ jobs:
     steps:
       - checkout
       - run:
+          command: bundle install
+      - run:
           name: rudocop
           command: bundle exec rudocop
       - slack/status:
-          success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n:github-wh: User：$CIRCLE_USERNAME'
-          failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n:github-wh: User：$CIRCLE_USERNAME'
+          success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n\n:github-wh: User：$CIRCLE_USERNAME'
+          failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n\n:github-wh: User：$CIRCLE_USERNAME'
           webhook: '${SLACK_WEBHOOK}'
 
 
@@ -67,6 +69,6 @@ jobs:
       - heroku/deploy-via-git:
         only-branch: master
       - slack/status:
-          success_message: ':circleci-success: $CIRCLE_BRANCH のデプロイが完了しました\n:github-wh: User：$CIRCLE_USERNAME'
-          failure_message: ':circleci-failed: $CIRCLE_BRANCH のデプロイが失敗しました\n:github-wh: User：$CIRCLE_USERNAME'
+          success_message: ':circleci-success: $CIRCLE_BRANCH のデプロイが完了しました\n\n:github-wh: User：$CIRCLE_USERNAME'
+          failure_message: ':circleci-failed: $CIRCLE_BRANCH のデプロイが失敗しました\n\n:github-wh: User：$CIRCLE_USERNAME'
           webhook: '${SLACK_WEBHOOK}'
