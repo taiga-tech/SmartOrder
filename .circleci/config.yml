@@ -68,8 +68,8 @@ jobs:
 
 
   test:
-    # executor:
-    #   name: default
+    executor:
+      name: default
     steps:
       - checkout
       - bundle_install
