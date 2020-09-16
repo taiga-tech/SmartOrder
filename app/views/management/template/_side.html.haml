@@ -1,21 +1,14 @@
 .Side.off
   = link_to "#" do
     .Side__staff
-      .image
-
-      .name
+      .Side__staff--image
+      .Side__staff--name
         仲野大雅
 
-  = link_to root_path do
+  = link_to management_index_path do
     .Side__link
       .icon
       トップ
-
-  = link_to store_path(1) do
-    .Side__link
-      .icon
-        = material_icon.store_mall_directory
-      店舗情報
 
   = link_to edit_store_path(1) do
     .Side__link
