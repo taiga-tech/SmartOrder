@@ -52,6 +52,11 @@ commands:
           failure_message: ':circleci-failed: $CIRCLE_BRANCH のデプロイが失敗しました\n\n:github-wh: User：$CIRCLE_USERNAME'
           webhook: '${SLACK_WEBHOOK}'
 
+  run_rubocop:
+    steps:
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
 
 jobs:
   build:
@@ -63,14 +68,12 @@ jobs:
 
 
   test:
-    executor:
-      name: default
+    # executor:
+    #   name: default
     steps:
       - checkout
       - bundle_install
-      - run:
-          name: Rubocop
-          command: bundle exec rubocop
+      - run_rubocop
       - test_notification
 
 
