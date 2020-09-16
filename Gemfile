@@ -33,7 +33,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
   gem 'rubocop', require: false
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -66,3 +70,4 @@ gem 'ancestry'
 gem 'phonelib'
 gem 'payjp'
 gem 'geocoder'
+gem 'material_icons'

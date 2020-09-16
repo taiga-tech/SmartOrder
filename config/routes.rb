@@ -2,9 +2,10 @@
 
 Rails.application.routes.draw do
   root 'management#index'
-  resources :management do
+  resources :management, only: :index do
     collection do
       resources :menus
+      resources :store, only: %i[edit update]
     end
   end
 end

@@ -1,0 +1,30 @@
+.Mg-header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 3;
+  background-color: #1a73e8;
+  color: #fff;
+  box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.3);
+  width: 100%;
+  padding: 0 20px;
+  line-height: 50px;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  &__title {
+    font-size: 25px;
+  }
+  &__bar-icon {
+    font-size: 23px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+}
