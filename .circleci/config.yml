@@ -33,9 +33,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "Gemfile.lock" }}
-        - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -45,7 +45,7 @@ jobs:
 
       - save_cache:
           paths:
-          - ./vendor/bundle
+            - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
 
