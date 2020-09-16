@@ -59,12 +59,10 @@ commands:
           command: mv config/database.yml.ci config/database.yml
       - run:
           name: db:create
-          command: |
-            bundle exec rake db:create
+          command: rails db:create #bundle exec rake db:create
       - run:
           name: db:migrate
-          command:  |
-            bundle exec rake db:schema:load
+          command: rails db:migrate #bundle exec rake db:schema:load
 
   test_notification:
     steps:
@@ -102,7 +100,7 @@ jobs:
     steps:
       - checkout
       - bundle_install
-      - set_db
+      # - set_db
       - run_rubocop
       - run_rspec
       - test_notification
