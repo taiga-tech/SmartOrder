@@ -58,8 +58,12 @@ jobs:
       - bundle_install
 
   test:
-    executor: ruby/default
     working_directory: ~/SmartOrder
+    - docker:
+        environment:
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
     steps:
       - checkout
       - bundle_install
