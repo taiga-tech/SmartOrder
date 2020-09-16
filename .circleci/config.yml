@@ -5,6 +5,7 @@ orbs:
   slack: circleci/slack@3.4.2
   heroku: circleci/heroku@1.2.2
 
+# ---------------------------------
 
 executors:
   default:
@@ -16,6 +17,7 @@ executors:
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
 
+# ---------------------------------
 
 commands:
   bundle_install:
@@ -66,14 +68,20 @@ commands:
           name: rspec
           command: bundle exec rspec
 
+# ---------------------------------
 
 jobs:
-  test:
+  build:
     executor:
       name: default
     steps:
       - checkout
       - bundle_install
+
+  test:
+    # executor:
+    #   name: default
+    steps:
       - run_rubocop
       - run_rspec
       - test_notification
@@ -87,23 +95,35 @@ jobs:
         only-branch: master
       - deploy_notification
 
+# ---------------------------------
 
 workflows:
   test:
     jobs:
+      - build:
+          filters:
+            branches:
+                ignore: master
       - test:
+          requires:
+            - build
           filters:
             branches:
                 ignore: master
 
   heroku_deploy:
     jobs:
+      - build:
+          filters:
+            branches:
+                only: master
       - test:
           filters:
             branches:
                 only: master
       - deploy_master:
           requires:
+            - build
             - test
           filters:
             branches:
