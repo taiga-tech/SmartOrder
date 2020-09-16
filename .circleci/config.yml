@@ -59,15 +59,11 @@ commands:
       - run:
           name: db:create
           command: |
-            rails db:create
+            bundle exec rake db:create
       - run:
           name: db:migrate
           command:  |
-            rails db:migrate
-      - run:
-          name: db:seed
-          command: |
-            rails db:seed
+            bundle exec rake db:schema:load
 
   test_notification:
     steps:
