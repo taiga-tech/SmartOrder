@@ -75,6 +75,7 @@ jobs:
       - checkout
       - bundle_install
       - run_rubocop
+      - run_rspec
       - test_notification
 
   deploy_master:
