@@ -51,9 +51,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -69,7 +69,7 @@ jobs:
       - run:
           name: rudocop
           command: bundle exec rudocop
-          
+
       - slack/status:
           success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n\n:github-wh: User：$CIRCLE_USERNAME'
           failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n\n:github-wh: User：$CIRCLE_USERNAME'
