@@ -5,6 +5,16 @@ orbs:
   slack: circleci/slack@3.4.2
   heroku: circleci/heroku@1.2.2
 
+executors:
+  default:
+    working_directory: ~/SmartOrder
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+        environment:
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
+
 commands:
   bundle_install:
     steps:
@@ -36,6 +46,7 @@ commands:
           failure_message: ':circleci-failed: $CIRCLE_BRANCH のデプロイが失敗しました\n\n:github-wh: User：$CIRCLE_USERNAME'
           webhook: '${SLACK_WEBHOOK}'
 
+
 workflows:
   test:
     jobs:
@@ -51,20 +62,15 @@ workflows:
 
 jobs:
   build:
-    executor: ruby/default
     working_directory: ~/SmartOrder
+    executor: ruby/default
     steps:
       - checkout
       - bundle_install
 
   test:
-    working_directory: ~/SmartOrder
-    docker:
-      - image: circleci/ruby:2.7.1-node-browsers
-        environment:
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          BUNDLER_VERSION: 2.1.4
+    executor:
+      name: default
     steps:
       - checkout
       - bundle_install
@@ -75,10 +81,10 @@ jobs:
 
 
   deploy_master:
-    executor: heroku/default # 標準の buildpack-deps イメージを使用します。このイメージは、Heroku の CLI をインストールする際に前提条件を提示します。
+    executor: heroku/default
     steps:
       - checkout
-      - heroku/install # 必要に応じて heroku インストール コマンドを実行します。
+      - heroku/install
       - heroku/deploy-via-git:
         only-branch: master
       - deploy_notification
