@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -6,7 +8,7 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
-  config.hosts << "smart-order-app.herokuapp.com"
+  config.hosts << 'smart-order-app.herokuapp.com'
 
   # Do not eager load code on boot.
   config.eager_load = false
