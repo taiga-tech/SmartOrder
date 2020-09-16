@@ -100,7 +100,7 @@ jobs:
     steps:
       - checkout
       - bundle_install
-      # - set_db
+      - set_db
       - run_rubocop
       - run_rspec
       - test_notification
