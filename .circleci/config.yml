@@ -53,25 +53,6 @@ commands:
           webhook: '${SLACK_WEBHOOK}'
 
 
-workflows:
-  test:
-    jobs:
-      - test:
-          filters:
-            branches:
-                ignore: master
-
-  heroku_deploy:
-    jobs:
-      - test
-      - deploy_master:
-          requires:
-            - test
-          filters:
-            branches:
-                only: master
-
-
 jobs:
   build:
     executor:
@@ -101,3 +82,25 @@ jobs:
       - heroku/deploy-via-git:
         only-branch: master
       - deploy_notification
+
+
+workflows:
+  test:
+    jobs:
+      - test:
+          filters:
+            branches:
+                ignore: master
+
+  heroku_deploy:
+    jobs:
+      - test
+          filters:
+            branches:
+                only: master
+      - deploy_master:
+          requires:
+            - test
+          filters:
+            branches:
+                only: master
