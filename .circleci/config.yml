@@ -50,11 +50,26 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
       - run:
-          command: bundle install
+          name: install dependencies
+          command: |
+            gem install bundler -v 2.1.4
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
       - run:
           name: rudocop
           command: bundle exec rudocop
+          
       - slack/status:
           success_message: ':circleci-success: $CIRCLE_BRANCH のテストが完了しました\n\n:github-wh: User：$CIRCLE_USERNAME'
           failure_message: ':circleci-failed: $CIRCLE_BRANCH のテストが失敗しました\n\n:github-wh: User：$CIRCLE_USERNAME'
