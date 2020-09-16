@@ -68,8 +68,8 @@ workflows:
 
 jobs:
   build:
-    working_directory: ~/SmartOrder
-    executor: ruby/default
+    executor:
+      name: default
     steps:
       - checkout
       - bundle_install
@@ -81,8 +81,8 @@ jobs:
       - checkout
       - bundle_install
       - run:
-          name: rubocop
-          command: bundle exec rudocop
+          name: Rubocop
+          command: bundle exec rubocop
       - test_notification
 
 
