@@ -24,6 +24,11 @@
 |jQuery|4.4.0|
 |CircleCi|2.1|
 
+**CircleCiの動き**
+  - mastarへcommitするとテストが回り、テスト通過後、自動的にherokuへデプロイ
+  - master以外のブランチへcommitするとテストが回り、テスト通過後、マージ可
+  - テスト完了、失敗、slack通知
+
 ## メリット
 
 ### ユーザー側
