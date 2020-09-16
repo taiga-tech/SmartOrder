@@ -2,9 +2,9 @@
 .wrapper
   = render "management/template/side"
   .Main
-    .Main__form
+    .Main__Contents
       = form_with model: @store, local: true, id: "new_store" do |f|
-        .Main__form--contents
+        .Form
           .Form-title
             = @title
           .content
