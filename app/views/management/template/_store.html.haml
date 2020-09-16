@@ -1,0 +1,23 @@
+.store
+  .store__info
+    .contents
+      .contents__content
+        .contents__content--info
+          〒
+          = @store.zipcode
+      .contents__content
+        .contents__content--info
+          = @store.address
+      .contents__content
+        .contents__content--info
+          ☎︎
+          = @store.tel
+      .contents__content
+        .contents__content--info
+          = @store.time
+      .contents__content
+        .contents__content--info
+          = @store.holyday
+      .contents__content
+        = link_to edit_store_path(1) do
+          編集
