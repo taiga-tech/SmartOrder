@@ -1,0 +1,36 @@
+= render "management/template/header"
+.wrapper
+  = render "management/template/side"
+  .Main
+    .Main__Contents
+      = form_with model: @store, local: true, id: "new_store" do |f|
+        .Form
+          .Form-title
+            = @title
+          .content
+            .label
+              郵便番号
+            .field_control
+              = f.text_field :zipcode, class: "field"
+          .content
+            .label
+              住所
+            .field_control
+              = f.text_field :address, class: "field long"
+          .content
+            .label
+              電話番号
+            .field_control
+              = f.text_field :tel, class: "field"
+          .content
+            .label
+              営業時間
+            .field_control
+              = f.text_field :time, class: "field"
+          .content
+            .label
+              定休日
+            .field_control
+              = f.text_field :holyday, class: "field"
+          .content-submit
+            = f.submit "編集", class: "submit"
