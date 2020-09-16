@@ -9,6 +9,7 @@ orbs:
 workflows:
   test:
     jobs:
+      - build
       - test:
           requires:
             - build
