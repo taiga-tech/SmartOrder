@@ -76,12 +76,12 @@ commands:
 # ---------------------------------
 
 jobs:
-  build:
-    executor:
-      name: default
-    steps:
-      - checkout
-      - bundle_install
+  # build:
+  #   executor:
+  #     name: default
+  #   steps:
+  #     - checkout
+  #     - bundle_install
 
   test:
     executor:
@@ -90,6 +90,7 @@ jobs:
       - run:
           name: pwd
           command: pwd
+      - bundle_install
       - run_rubocop
       - run_rspec
       - test_notification
@@ -108,30 +109,19 @@ jobs:
 workflows:
   test:
     jobs:
-      - build:
-          filters:
-            branches:
-                ignore: master
       - test:
-          requires:
-            - build
           filters:
             branches:
                 ignore: master
 
   heroku_deploy:
     jobs:
-      - build:
-          filters:
-            branches:
-                only: master
       - test:
           filters:
             branches:
                 only: master
       - deploy_master:
           requires:
-            - build
             - test
           filters:
             branches:
