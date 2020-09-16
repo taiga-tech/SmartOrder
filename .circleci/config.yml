@@ -56,12 +56,18 @@ commands:
 workflows:
   test:
     jobs:
-      - test
+      - test:
+          filters:
+            branches:
+              ignore: master
 
   heroku_deploy:
     jobs:
+      - test
       - deploy_master:
           filters:
+            requires:
+                - test
             branches:
                 only: master
 
@@ -73,6 +79,7 @@ jobs:
     steps:
       - checkout
       - bundle_install
+
 
   test:
     executor:
