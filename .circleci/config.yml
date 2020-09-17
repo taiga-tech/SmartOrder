@@ -35,6 +35,8 @@ executors:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
+          RAILS_ENV: 'production'
+          MYSQL_USERNAME: "root"
 
 # ---------------------------------
 
