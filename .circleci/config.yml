@@ -27,21 +27,21 @@ executors:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           MYSQL_ROOT_HOST: '%'
 
-  production:
-    working_directory: ~/SmartOrder
-    docker:
-      - image: circleci/ruby:2.7.1-node-browsers
-        environment:
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          BUNDLER_VERSION: 2.1.4
-          MYSQL_USERNAME: ${MYSQL_USERNAME}
-          MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-          MYSQL_HOST: ${MYSQL_HOST}
-      - image: circleci/mysql:8.0
-        command: --default-authentication-plugin=mysql_native_password
-        environment:
-          MYSQL_ROOT_HOST: ${MYSQL_HOST}
+  # production:
+  #   working_directory: ~/SmartOrder
+  #   docker:
+  #     - image: circleci/ruby:2.7.1-node-browsers
+  #       environment:
+  #         BUNDLE_RETRY: 3
+  #         BUNDLE_PATH: vendor/bundle
+  #         BUNDLER_VERSION: 2.1.4
+  #         MYSQL_USERNAME: ${MYSQL_USERNAME}
+  #         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #         MYSQL_HOST: ${MYSQL_HOST}
+  #     - image: circleci/mysql:8.0
+  #       command: --default-authentication-plugin=mysql_native_password
+  #       environment:
+  #         MYSQL_ROOT_HOST: ${MYSQL_HOST}
 
 # ---------------------------------
 
@@ -118,16 +118,16 @@ jobs:
       - run_rspec
       - test_notification
 
-  deploy_test:
-    executor:
-      name: production
-    steps:
-      - checkout
-      - bundle_install
-      - set_db
-      - run_rubocop
-      - run_rspec
-      - test_notification
+  # deploy_test:
+  #   executor:
+  #     name: production
+  #   steps:
+  #     - checkout
+  #     - bundle_install
+  #     - set_db
+  #     - run_rubocop
+  #     - run_rspec
+  #     - test_notification
 
   deploy_master:
     executor: heroku/default
@@ -141,19 +141,19 @@ jobs:
 # ---------------------------------
 
 workflows:
-  test:
-    jobs:
-      - test:
-          filters:
-            branches:
-                ignore: master
+  # test:
+  #   jobs:
+  #     - test:
+  #         filters:
+  #           branches:
+  #               ignore: master
 
   heroku_deploy:
     jobs:
       - test:
-          filters:
-            branches:
-                only: master
+          # filters:
+          #   branches:
+          #       only: master
       - deploy_master:
           requires:
             - test
