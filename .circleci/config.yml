@@ -35,14 +35,13 @@ executors:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
-          RAILS_ENV: production
           MYSQL_USERNAME: ${MYSQL_USERNAME}
           MYSQL_PASSWORD: ${MYSQL_PASSWORD}
           MYSQL_HOST: ${MYSQL_HOST}
       - image: circleci/mysql:8.0
         command: --default-authentication-plugin=mysql_native_password
         environment:
-          MYSQL_ROOT_HOST: "%"
+          MYSQL_ROOT_HOST: ${MYSQL_HOST}
 
 # ---------------------------------
 
