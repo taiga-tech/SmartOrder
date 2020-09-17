@@ -8,7 +8,7 @@ orbs:
 # ---------------------------------
 
 executors:
-  default:
+  test:
     working_directory: ~/SmartOrder
     docker:
       - image: circleci/ruby:2.7.1-node-browsers
@@ -26,6 +26,15 @@ executors:
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           MYSQL_ROOT_HOST: '%'
+
+  production:
+    working_directory: ~/SmartOrder
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
+        environment:
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
 
 # ---------------------------------
 
@@ -54,9 +63,6 @@ commands:
 
   set_db:
     steps:
-      # - run:
-      #     name: move db config
-      #     command: mv config/database.yml.ci config/database.yml
       - run:
           name: db:create
           command: bundle exec rake db:create
@@ -96,7 +102,18 @@ jobs:
 
   test:
     executor:
-      name: default
+      name: test
+    steps:
+      - checkout
+      - bundle_install
+      - set_db
+      - run_rubocop
+      - run_rspec
+      - test_notification
+
+  deploy_test:
+    executor:
+      name: production
     steps:
       - checkout
       - bundle_install
