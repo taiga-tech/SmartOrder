@@ -35,7 +35,8 @@ executors:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           BUNDLER_VERSION: 2.1.4
-          MYSQL_USERNAME: "root"
+          MYSQL_USERNAME: $MYSQL_USERNAME
+          MYSQL_PASSWORD: $MYSQL_PASSWORD
       - image: circleci/mysql:8.0
         command: --default-authentication-plugin=mysql_native_password
 
