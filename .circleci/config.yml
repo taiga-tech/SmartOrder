@@ -90,7 +90,6 @@ commands:
 # ---------------------------------
 
 jobs:
-
   test:
     executor:
       name: test
