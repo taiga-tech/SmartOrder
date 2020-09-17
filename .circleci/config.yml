@@ -27,10 +27,10 @@ executors:
           MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           MYSQL_ROOT_HOST: '%'
 
-  # production:
-  #   working_directory: ~/SmartOrder
-  #   docker:
-  #     - image: circleci/ruby:2.7.1-node-browsers
+  production:
+    working_directory: ~/SmartOrder
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers
   #       environment:
   #         BUNDLE_RETRY: 3
   #         BUNDLE_PATH: vendor/bundle
