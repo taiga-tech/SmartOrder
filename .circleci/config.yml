@@ -143,13 +143,13 @@ workflows:
 
   heroku_deploy:
     jobs:
-      - test:
+      - deploy_test:
           filters:
             branches:
                 only: master
       - deploy_master:
           requires:
-            - test
+            - deploy_test
           filters:
             branches:
                 only: master
