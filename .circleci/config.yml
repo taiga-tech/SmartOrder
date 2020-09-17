@@ -31,17 +31,17 @@ executors:
     working_directory: ~/SmartOrder
     docker:
       - image: circleci/ruby:2.7.1-node-browsers
-  #       environment:
-  #         BUNDLE_RETRY: 3
-  #         BUNDLE_PATH: vendor/bundle
-  #         BUNDLER_VERSION: 2.1.4
-  #         MYSQL_USERNAME: ${MYSQL_USERNAME}
-  #         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #         MYSQL_HOST: ${MYSQL_HOST}
-  #     - image: circleci/mysql:8.0
-  #       command: --default-authentication-plugin=mysql_native_password
-  #       environment:
-  #         MYSQL_ROOT_HOST: ${MYSQL_HOST}
+        environment:
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLER_VERSION: 2.1.4
+          MYSQL_USERNAME: ${MYSQL_USERNAME}
+          MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+          MYSQL_HOST: ${MYSQL_HOST}
+      - image: circleci/mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+          MYSQL_ROOT_HOST: ${MYSQL_HOST}
 
 # ---------------------------------
 
@@ -67,15 +67,6 @@ commands:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-  docker:
-    steps:
-      - run:
-          name: build
-          command: |
-            docker-compose build
-            docker-compose run --rm web rails db:create
-            docker-compose run --rm web rails db:migrate
 
   set_db:
     steps:
@@ -132,9 +123,8 @@ jobs:
       name: production
     steps:
       - checkout
-      # - bundle_install
-      # - set_db
-      - docker
+      - bundle_install
+      - set_db
       - run_rubocop
       - run_rspec
       - test_notification
