@@ -3,7 +3,7 @@
     .Side__staff
       .Side__staff--image
       .Side__staff--name
-        仲野大雅
+        スタッフ
 
   = link_to management_index_path do
     .Side__link
@@ -16,7 +16,7 @@
         = material_icon.edit
       店舗情報編集
 
-  = link_to "#" do
+  = link_to menus_path do
     .Side__link
       .icon
         = material_icon.local_dining
@@ -43,8 +43,8 @@
       .icon
       売上
 
-  = link_to "#" do
+  = link_to store_path(1) do
     .Side__link
       .icon
         = material_icon.map
-      マップ
+      アクセス

@@ -2,14 +2,14 @@ $(function() {
 
   function unActive() { $(".Side").addClass('off');
     $(".Side").animate( { "marginLeft": "0px" }, 400 ).removeClass("on");
-    // $(".Main").removeAttr("style");
+    $(".gray-out").remove();
   }
 
   $('#mg-bar').on('click',function(){
     if ($(".Side").hasClass('off')) {
       $(".Side").removeClass('off');
       $(".Side").animate( { "marginLeft": "400px" }, 400 ).addClass("on");
-      // $(".Main").css({"background": "rgba(0, 0, 0, 0.1)", "z-index": "1"});
+      $(".Main").append(`<div class="gray-out"></div>`);
     } else {
       unActive();
     }
