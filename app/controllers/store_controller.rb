@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 
 class StoreController < ApplicationController
-  before_action :set_store, only: %i[edit update]
+  before_action :set_store, only: [show, edit, update]
 
-  def edit; end
+  def show
+    gon.store = @store
+    @google_api = "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API']}&callback=initMap"
+  end
+
+  def edit
+  end
 
   def update
     if @store.update(store_params)
-      redirect_to management_index_path
+      redirect_to store_path
     else
       render :edit
     end
@@ -21,6 +27,5 @@ class StoreController < ApplicationController
 
   def set_store
     @store = Store.find(1)
-    @title = '店舗情報編集'
   end
 end
