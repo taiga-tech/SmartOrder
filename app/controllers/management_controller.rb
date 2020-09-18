@@ -1,6 +1,5 @@
 class ManagementController < ApplicationController
-  before_action :set_store, only: :index
-
   def index
+    @store = Store.find(1)
   end
 end
