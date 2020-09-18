@@ -28,8 +28,11 @@ Style/NumericLiterals:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Bundler/OrderedGems:
+Lint/ShadowedException:
   Enabled: false
 
-Lint/ShadowedException:
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
