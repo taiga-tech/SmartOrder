@@ -36,3 +36,6 @@ Style/EmptyMethod:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/SymbolArray:
+  Enabled: false

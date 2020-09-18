@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'management#index'
-  resources :management, only: [:index] do
+  resources :management, only: :index do
     collection do
       resources :menus
-      resources :store, only: [show, edit, update]
+      resources :store, only: [:show, :edit, :update]
     end
   end
 end
