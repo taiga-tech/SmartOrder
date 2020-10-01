@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StoreController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update]
 

@@ -34,8 +34,8 @@ Lint/ShadowedException:
 Style/EmptyMethod:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
+# Style/FrozenStringLiteralComment:
+#   Enabled: false
 
 Style/SymbolArray:
   Enabled: false
